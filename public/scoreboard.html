@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+	<title>Soccer Scoreboard</title>
+	<link rel="stylesheet" type="text/css" href="scoreboard.css">
+</head>
+
+<body>
+	<div class="scoreboard">
+		<div class="top-row">
+			<div class="box box-a">
+				<p class="initials" id="home">HOME</p>
+			</div>
+			<div class="box box-score">
+				<p class="score">0-0</p>
+			</div>
+			<div class="box box-b">
+				<p class="initials" id="away">AWAY</p>
+			</div>
+		</div>
+		<div class="bottom-row">
+			<div class="box box-time">
+				<p id="timer">00:00</p>
+			</div>
+		</div>
+	</div>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		const socket = io();
+
+		socket.on('score', (data) => {
+			const homeScore = data.homeScore;
+			const awayScore = data.awayScore;
+			document.getElementsByClassName('score')[0].textContent = homeScore + '-' + awayScore;
+		});
+
+		socket.on('time', (data) => {
+			const minutes = data.minutes;
+			const seconds = data.seconds;
+			const formattedTime = (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
+			document.getElementById('timer').textContent = formattedTime;
+		});
+
+		socket.on('team-initials', (data) => {
+			const homeInitials = data.homeInitials;
+			const awayInitials = data.awayInitials;
+			document.getElementById('home-initials').textContent = homeInitials;
+			document.getElementById('away-initials').textContent = awayInitials;
+		});
+	</script>
+</body>
+
+</html>

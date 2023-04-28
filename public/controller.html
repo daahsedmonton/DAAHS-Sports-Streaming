@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+  <title>Scoreboard Controller</title>
+</head>
+
+<body>
+  <div class="controls">
+    <button onclick="updateScore('home', 'increase')">Home +1</button>
+    <button onclick="updateScore('home', 'decrease')">Home -1</button>
+    <button onclick="updateScore('away', 'increase')">Away +1</button>
+    <button onclick="updateScore('away', 'decrease')">Away -1</button>
+    <button onclick="startTimer()">Start Timer</button>
+    <button onclick="stopTimer()">Stop Timer</button>
+    <button onclick="reset()">Reset</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    var isTimerRunning = false;
+
+    function updateScore(team, action) {
+      socket.emit('update-score', { team, action });
+    }
+
+    function startTimer() {
+      if (!isTimerRunning) {
+        socket.emit('start-timer');
+        isTimerRunning = true;
+      }
+      else {
+        alert('Timer is already running!');
+      }
+    }
+
+    function stopTimer() {
+      if (isTimerRunning) {
+        socket.emit('stop-timer');
+        isTimerRunning = false;
+      }
+      else {
+        alert('Timer is not running!');
+      }
+    }
+
+    function reset() {
+      socket.emit('stop-timer');
+      isTimerRunning = false;
+      socket.emit('reset');
+    }
+  </script>
+</body>
+
+</html>

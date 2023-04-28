@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@700;800;900;1000&family=Righteous&display=swap');
+
+body {
+	margin: 0;
+	background-color: rgba(0, 0, 0, 0.0);
+}
+
+.scoreboard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: #fff;
+	font-family: 'Mulish', 'Courier New', Courier, monospace;
+	font-size: 5rem;
+	letter-spacing: 10px;
+	height: fit-content;
+	width: fit-content;
+}
+
+.top-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgb(15, 69, 113);
+}
+
+.bottom-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 400px;
+	height: 150px;
+	/* border: red 1px solid; */
+}
+
+.box-a {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	/* margin-right: -5px; */
+}
+
+.box-b {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	/* margin-left: -5px; */
+}
+
+.box-time {
+	/* 	margin-left: -5px;
+	margin-right: -5px; */
+	background-color: white;
+}
+
+.box-score {
+	background-color: #d3ecf5;
+}
+
+.initials {
+	font-size: 6rem;
+	margin: 0;
+	text-align: center;
+}
+
+.score {
+	font-size: 8rem;
+	margin: 0;
+	color: rgb(15, 69, 113);
+}
+
+.box-time p {
+	margin: 0;
+	font-size: 6rem;
+	text-align: center;
+	color: rgb(15, 69, 113);
+}
