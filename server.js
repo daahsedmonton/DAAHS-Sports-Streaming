@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
-const port = 5500;
+const port = 2652;
 
 app.use(express.static("public"));
 
@@ -51,10 +51,11 @@ function reset() {
     awayScore = 0;
     minutes = 0;
     seconds = 0;
-    homeInitials = 'HOME';
-    awayInitials = 'AWAY';
+    // homeInitials = 'HOME';
+    // awayInitials = 'AWAY';
     io.emit('score', { homeScore, awayScore });
     io.emit('time', { minutes, seconds });
+    // io.emit('team-initials', { homeInitials, awayInitials });
 }
 
 function setTeamInitials(team, initials) {
@@ -71,6 +72,10 @@ io.on('connection', (socket) => {
 
     socket.emit('score', { homeScore, awayScore });
     socket.emit('time', { minutes, seconds });
+
+    socket.on('set-team-initials', ({ team, initials }) => {
+        setTeamInitials(team, initials);
+    });
 
     socket.on('update-score', ({ team, action }) => {
         updateScore(team, action);

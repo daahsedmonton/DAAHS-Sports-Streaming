@@ -1,0 +1,46 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+input[type="text"] {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    width: 5rem;
+    text-transform: uppercase;
+}
+
+button[type="submit"] {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+button {
+    font-size: 1.5rem;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
