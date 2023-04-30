@@ -2,17 +2,17 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
-const port = 2652;
+const port = 9999;
 
 app.use(express.static("public"));
 
-var homeScore = 0;
-var awayScore = 0;
-var minutes = 0;
-var seconds = 0;
-var timerInterval;
-var homeInitials = 'HOME';
-var awayInitials = 'AWAY';
+let homeScore = 0;
+let awayScore = 0;
+let minutes = 0;
+let seconds = 0;
+let timerInterval;
+let homeInitials = 'HOME';
+let awayInitials = 'AWAY';
 
 function updateScore(team, action) {
     if (team === 'home') {

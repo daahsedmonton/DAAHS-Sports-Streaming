@@ -1,5 +1,5 @@
 const socket = io();
-var isTimerRunning = false;
+let isTimerRunning = false;
 
 function setInitials(event) {
     event.preventDefault();
