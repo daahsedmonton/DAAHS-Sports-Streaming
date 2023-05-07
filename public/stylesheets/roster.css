@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@700;800;900;1000&family=Righteous&display=swap');
+
+body {
+    background-color: rgb(0, 0, 0, 0.0);
+    font-family: 'Mulish', 'Courier New', Courier, monospace;
+    margin: 0;
+}
+
+h1 {
+    text-align: left;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+strong {
+    font-weight: 900;
+}
+
+.roster-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.roster {
+    background-color: rgb(255, 255, 255);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.substitutes {
+    background-color: #d3ecf5;
+}
+
+.substitutes p {
+    padding: 0.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    padding: 0.5rem;
+    border-bottom: 1px solid rgb(15, 69, 113);
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+li:nth-child(even) {
+    background-color: #d3ecf5;
+}
+
+li:nth-child(odd) {
+    background-color: #fff;
+}
+
+ul li:first-child {
+    font-weight: bold;
+}

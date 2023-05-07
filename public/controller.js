@@ -14,6 +14,19 @@ function setTeamInitials(team, initials) {
     socket.emit('set-team-initials', { team, initials });
 }
 
+function setTime(event) {
+    event.preventDefault();
+    
+    if (!isTimerRunning) {
+        const minutes = document.getElementById('minutes').value;
+        const seconds = document.getElementById('seconds').value;
+        socket.emit('set-time', { minutes, seconds });
+    }
+    else {
+        alert('Timer is  running! Please stop the timer and try again.');
+    }
+}
+
 function updateScore(team, action) {
     socket.emit('update-score', { team, action });
 }
@@ -29,13 +42,8 @@ function startTimer() {
 }
 
 function stopTimer() {
-    if (isTimerRunning) {
-        socket.emit('stop-timer');
-        isTimerRunning = false;
-    }
-    else {
-        alert('Timer is not running!');
-    }
+    socket.emit('stop-timer');
+    isTimerRunning = false;
 }
 
 function reset() {

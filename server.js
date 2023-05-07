@@ -14,6 +14,23 @@ let timerInterval;
 let homeInitials = 'HOME';
 let awayInitials = 'AWAY';
 
+function setTeamInitials(team, initials) {
+    if (team === 'home') {
+        homeInitials = initials;
+    } else if (team === 'away') {
+        awayInitials = initials;
+    }
+    io.emit('team-initials', { homeInitials, awayInitials });
+}
+
+function setTime(min, sec) {
+    minutes = parseInt(min);
+    seconds = parseInt(sec);
+    if (minutes >= 0 && seconds >= 0 && seconds < 60) {
+        io.emit('time', { minutes, seconds });
+    }
+}
+
 function updateScore(team, action) {
     if (team === 'home') {
         if (action === 'increase') {
@@ -58,15 +75,6 @@ function reset() {
     // io.emit('team-initials', { homeInitials, awayInitials });
 }
 
-function setTeamInitials(team, initials) {
-    if (team === 'home') {
-        homeInitials = initials;
-    } else if (team === 'away') {
-        awayInitials = initials;
-    }
-    io.emit('team-initials', { homeInitials, awayInitials });
-}
-
 io.on('connection', (socket) => {
     console.log('A user has connected.');
 
@@ -79,6 +87,10 @@ io.on('connection', (socket) => {
 
     socket.on('update-score', ({ team, action }) => {
         updateScore(team, action);
+    });
+
+    socket.on('set-time', ({ minutes, seconds }) => {
+        setTime(minutes, seconds);
     });
 
     socket.on('start-timer', () => {

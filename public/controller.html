@@ -5,19 +5,29 @@
 
 <head>
   <title>Scoreboard Controller</title>
-  <link rel="stylesheet" type="text/css" href="controller.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/controller.css">
 </head>
 
 <body>
   <div class="controls">
     <form onsubmit="setInitials(event)">
       <label for="home-initials">Home Team:</label>
-      <input type="text" id="home-initials" name="home-initials" maxlength="3" required>
+      <input type="text" id="home-initials" name="home-initials" maxlength="4" required>
 
       <label for="away-initials">Away Team:</label>
-      <input type="text" id="away-initials" name="away-initials" maxlength="3" required>
+      <input type="text" id="away-initials" name="away-initials" maxlength="4" required>
 
       <button type="submit">Set Initials</button>
+    </form>
+
+    <form onsubmit="setTime(event)">
+      <label for="minutes">Minutes:</label>
+      <input type="number" id="minutes" name="minutes" min="0" max="99" required>
+
+      <label for="seconds">Seconds:</label>
+      <input type="number" id="seconds" name="seconds" min="0" max="59" required>
+
+      <button type="submit">Set Time</button>
     </form>
 
     <button onclick="updateScore('home', 'increase')">Home +1</button>
