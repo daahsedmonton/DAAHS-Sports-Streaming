@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "daahs-sports-streaming",
+  "description": "A web app to make highschool sports streaming possible",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daahsedmonton/DAAHS-Sports-Streaming.git"
+  },
+  "author": "Dongwoo Kim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daahsedmonton/DAAHS-Sports-Streaming/issues"
+  },
+  "homepage": "https://github.com/daahsedmonton/DAAHS-Sports-Streaming#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "socket.io": "^4.7.2"
+  }
+}
