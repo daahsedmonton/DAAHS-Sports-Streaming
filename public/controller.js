@@ -1,11 +1,15 @@
 const socket = io();
 let isTimerRunning = false;
 
+const homeInitials = document.getElementById('home-initials').value.toUpperCase();
+const awayInitials = document.getElementById('away-initials').value.toUpperCase();
+const homeScore = document.getElementById('home-score');
+const awayScore = document.getElementById('away-score');
+const timer = document.getElementById('time');
+
 function setInitials(event) {
     event.preventDefault();
     
-    const homeInitials = document.getElementById('home-initials').value.toUpperCase();
-    const awayInitials = document.getElementById('away-initials').value.toUpperCase();
     setTeamInitials('home', homeInitials);
     setTeamInitials('away', awayInitials);
 }
@@ -50,4 +54,18 @@ function reset() {
     socket.emit('stop-timer');
     isTimerRunning = false;
     socket.emit('reset');
+    homeScore.textContent = 0;
+    awayScore.textContent = 0;
 }
+
+socket.on('time', (data) => {
+    const minutes = data.minutes;
+    const seconds = data.seconds;
+    const formattedTime = (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
+    document.getElementById('time').textContent = formattedTime;
+});
+
+socket.on('score', (data) => {
+    homeScore.textContent = data.homeScore;
+    awayScore.textContent = data.awayScore;
+});
